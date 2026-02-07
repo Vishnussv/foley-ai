@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        svg {
+            width: 512px;
+            height: 512px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="svg-container">
+        <!-- SVG will be injected here or already present -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="10" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0ff;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <!-- Background Circle -->
+            <circle cx="256" cy="256" r="240" fill="none" stroke="rgba(0, 243, 255, 0.2)" stroke-width="2" />
+            <circle cx="256" cy="256" r="220" fill="none" stroke="rgba(0, 243, 255, 0.1)" stroke-width="1"
+                stroke-dasharray="10 5" />
+
+            <!-- Dragon Silhouette (Minimalist/Geometrical) -->
+            <g filter="url(#glow)" fill="url(#cyanGrad)">
+                <!-- Dragon Head -->
+                <path d="M256,80 L180,180 L140,240 L160,280 L200,260 L256,400 L312,260 L352,280 L372,240 L332,180 Z" />
+                <!-- Horns/Detail -->
+                <path d="M256,80 L230,40 L210,120 Z" />
+                <path d="M256,80 L282,40 L302,120 Z" />
+                <!-- Eye Slits -->
+                <path d="M220,180 L245,210 L230,220 Z" fill="#fff" />
+                <path d="M292,180 L267,210 L282,220 Z" fill="#fff" />
+            </g>
+
+            <!-- Outer Tech Accents -->
+            <path d="M256,20 L256,50 M256,462 L256,492 M20,256 L50,256 M462,256 L492,256" stroke="#0ff" stroke-width="4"
+                stroke-linecap="round" />
+        </svg>
+    </div>
+</body>
+
+</html>
